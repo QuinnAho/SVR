@@ -34,6 +34,8 @@ Still mostly placeholder:
 ## Repo map
 
 - `Source/`: base game code
+  - `Source/SVR/Characters/`: player character classes (current: `ASVRFirstPersonCharacter`)
+  - `Source/SVR/Interaction/`: interaction interface + component
 - `Plugins/SVRCore/Source/`: core systems (telemetry, scoring, UI, training, platform)
 - `Content/`: Unreal assets
 - `Data/`: main data files and examples
@@ -74,6 +76,10 @@ Every meaningful change should include one of:
 - A repeatable PIE checklist with expected behavior
 - Automated checks (if available)
 - Expected JSON/CSV output fields
+
+Quick standards check:
+
+`./Scripts/standards/check-standards.ps1`
 
 ## Where to start as a new engineer
 

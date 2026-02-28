@@ -27,15 +27,62 @@ Done when: You can record a 30s video walking around and it looks legit.
 
 Achievement: The scenario progresses deterministically.
 
-Implement a simple finite state machine:
+State flow:
 Baseline -> Cue -> Escalation -> End -> Debrief
 
-- Baseline: calm idle timer (e.g., 20-40s).
-- Cue: alarm starts + first smoke cue appears.
-- Escalation: smoke increases / visibility decreases / urgency rises.
-- End: ends when user reaches exit zone OR time limit OR critical fail.
+### Milestone 2A - Scenario core types
+- Add `ESVRScenarioState` enum (`Baseline`, `Cue`, `Escalation`, `End`, `Debrief`).
+- Add `FSVRScenarioConfig` (durations, limits, thresholds).
+- Add `FSVRScenarioRuntime` (current state, elapsed time, end reason).
 
-Done when: You can run it 5 times and it always completes.
+Done when: Scenario state/config/runtime data is defined and compiling.
+
+### Milestone 2B - Scenario manager owner
+- Create one manager (`USVRScenarioManagerComponent` or equivalent).
+- Implement `StartScenario`, `TickScenario`, `TransitionToState`, `EndScenario`.
+- Block invalid transitions.
+
+Done when: All state changes go through one manager path.
+
+### Milestone 2C - Baseline state
+- On enter: reset runtime and start baseline timer.
+- On tick: count down and transition to `Cue`.
+
+Done when: Baseline always transitions after expected time.
+
+### Milestone 2D - Cue state
+- On enter: start alarm and first smoke cue.
+- On tick: transition to `Escalation` after configured delay.
+
+Done when: Cue effects trigger every run and transition deterministically.
+
+### Milestone 2E - Escalation state
+- Increase smoke/urgency over time with deterministic logic.
+- Keep behavior data-driven (curve/table), not hardcoded in many places.
+
+Done when: Escalation progression is visibly increasing and repeatable.
+
+### Milestone 2F - End conditions
+- End if exit zone reached.
+- End if time limit reached.
+- End if critical fail triggered.
+- Define tie-break priority if multiple happen in the same frame.
+
+Done when: End reason is always correct and deterministic.
+
+### Milestone 2G - Debrief handoff
+- Stop hazards on enter `Debrief`.
+- Freeze player movement/input.
+- Capture one scenario summary payload for scoring/reporting.
+
+Done when: Debrief always receives a complete summary payload.
+
+### Milestone 2H - Debug and verification
+- Add debug overlay (state, elapsed time, end reason).
+- Add debug commands (restart scenario, force next state).
+- Run 5 consecutive PIE sessions.
+
+Done when: 5/5 runs complete through full flow with no stuck states.
 
 ## Milestone 3 - Instrumentation v1 (event logging)
 

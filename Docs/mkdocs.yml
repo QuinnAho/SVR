@@ -30,6 +30,7 @@ nav:
       - Roadmap: Vision/roadmap.md
   - Tech:
       - Architecture: Tech/architecture.md
+      - Coding Standards: Tech/coding-standards.md
       - Telemetry Schema: Tech/telemetry-schema.md
       - Scoring Rubric: Tech/scoring-rubric.md
   - Pilot:

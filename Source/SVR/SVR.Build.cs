@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+using System.IO;
 using UnrealBuildTool;
 
 public class SVR : ModuleRules
@@ -7,6 +8,15 @@ public class SVR : ModuleRules
 	public SVR(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+		PrivateIncludePaths.AddRange(
+			new string[]
+			{
+				ModuleDirectory,
+				Path.Combine(ModuleDirectory, "Characters"),
+				Path.Combine(ModuleDirectory, "Interaction")
+			}
+		);
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
