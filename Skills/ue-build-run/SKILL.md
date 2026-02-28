@@ -19,7 +19,7 @@ Purpose: provide a repeatable, low-risk workflow to build the project and run a 
 
 ## Outputs
 - Local editor build attempt result (success/failure logs on machine running script).
-- Completed manual smoke checklist results from `scripts/run_pie_smoketest.md`.
+- Completed manual smoke checklist results from `scripts/run-pie-smoketest.md`.
 - Pass/fail note for Audit -> Score/Report -> Micro-drill -> Re-audit loop.
 
 ## Step-by-step procedure
@@ -27,7 +27,7 @@ Purpose: provide a repeatable, low-risk workflow to build the project and run a 
 - Run `scripts/build_editor.ps1` (Windows) or `scripts/build_editor.sh` (Unix-like) with local paths.
 - If build fails, fix compile errors before any PIE validation.
 - Open `SVR.uproject` in the correct engine version.
-- Follow `scripts/run_pie_smoketest.md` exactly.
+- Follow `scripts/run-pie-smoketest.md` exactly.
 - Record any nondeterministic behavior as a blocker.
 
 ## Verification checklist

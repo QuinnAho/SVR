@@ -1,0 +1,42 @@
+site_name: SVR Documentation
+site_description: Stress-Validated Readiness project docs
+docs_dir: .
+site_dir: ../site
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - For Developers: for-developers.md
+  - Vision:
+      - Product Vision: Vision/product-vision.md
+      - MVP Scope: Vision/mvp-scope.md
+      - MVP Roadmap: Vision/mvp-roadmap.md
+      - Roadmap: Vision/roadmap.md
+  - Tech:
+      - Architecture: Tech/architecture.md
+      - Telemetry Schema: Tech/telemetry-schema.md
+      - Scoring Rubric: Tech/scoring-rubric.md
+  - Pilot:
+      - Pilot One Pager: Pilot/pilot-one-pager.md
+      - Pilot Runbook: Pilot/pilot-runbook.md
+      - Deployment Notes: Pilot/deployment-notes.md
+  - Compliance:
+      - Data Minimization: Compliance/data-minimization.md
+      - Retention Policy: Compliance/retention-policy.md
+      - Security Notes: Compliance/security-notes.md
