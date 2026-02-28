@@ -1,0 +1,78 @@
+{
+  "scenario_id": "office_fire_mvp",
+  "version": "1.0.0",
+  "max_score": 100,
+  "pass_threshold": 80,
+  "conditional_pass_threshold": 65,
+  "objectives": [
+    {
+      "objective_id": "obj_activate_alarm",
+      "label": "Activate fire alarm promptly",
+      "weight": 25,
+      "scoring": "binary",
+      "evidence_event": "alarm_activated",
+      "why_success": "Alarm activated promptly.",
+      "why_fail": "Alarm was not activated in the required window."
+    },
+    {
+      "objective_id": "obj_identify_hazard",
+      "label": "Identify primary hazard",
+      "weight": 20,
+      "scoring": "binary",
+      "evidence_event": "hazard_identified",
+      "why_success": "Primary hazard correctly identified.",
+      "why_fail": "Primary hazard identification was missing or incorrect."
+    },
+    {
+      "objective_id": "obj_use_safe_exit",
+      "label": "Use safe evacuation route",
+      "weight": 25,
+      "scoring": "binary",
+      "evidence_event": "exit_selected",
+      "required_detail": { "selected_exit": "south_safe" },
+      "why_success": "Safe exit route selected.",
+      "why_fail": "Unsafe or blocked exit was selected."
+    },
+    {
+      "objective_id": "obj_extinguisher_judgment",
+      "label": "Use extinguisher only when safe",
+      "weight": 10,
+      "scoring": "binary",
+      "evidence_event": "extinguisher_attempted",
+      "required_detail": { "safe_to_fight": true },
+      "why_success": "Extinguisher decision matched scene safety.",
+      "why_fail": "Extinguisher decision did not match scene safety."
+    },
+    {
+      "objective_id": "obj_reaudit_correction",
+      "label": "Correct missed objective in re-audit",
+      "weight": 20,
+      "scoring": "binary",
+      "evidence_event": "re_audit_completed",
+      "why_success": "Targeted behavior improved in re-audit.",
+      "why_fail": "Targeted behavior was not improved in re-audit."
+    }
+  ],
+  "critical_errors": [
+    {
+      "code": "used_blocked_exit",
+      "penalty": 20,
+      "hard_fail": false,
+      "trigger_event": "critical_error",
+      "required_detail": { "critical_error_code": "used_blocked_exit" },
+      "why": "Blocked exit selected during evacuation."
+    },
+    {
+      "code": "ignored_alarm",
+      "penalty": 30,
+      "hard_fail": true,
+      "trigger_event": "critical_error",
+      "required_detail": { "critical_error_code": "ignored_alarm" },
+      "why": "Alarm cue ignored, creating severe delay risk."
+    }
+  ],
+  "explainability": {
+    "require_why_strings": true,
+    "include_evidence_event_ids": true
+  }
+}

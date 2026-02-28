@@ -1,0 +1,146 @@
+{
+  "session_id": "sess-20260228-001",
+  "participant_id": "anon-p001",
+  "scenario_id": "office_fire_mvp",
+  "exported_at": "2026-02-28T14:10:00Z",
+  "events": [
+    {
+      "event_id": "evt-001",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:00:00Z",
+      "event_type": "phase_transition",
+      "phase": "audit",
+      "actor_id": "system",
+      "outcome": "info",
+      "details": { "to_phase": "audit" }
+    },
+    {
+      "event_id": "evt-002",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:01:10Z",
+      "event_type": "alarm_activated",
+      "phase": "audit",
+      "actor_id": "anon-p001",
+      "objective_id": "obj_activate_alarm",
+      "outcome": "success",
+      "score_delta": 25
+    },
+    {
+      "event_id": "evt-003",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:03:00Z",
+      "event_type": "exit_selected",
+      "phase": "audit",
+      "actor_id": "anon-p001",
+      "objective_id": "obj_use_safe_exit",
+      "outcome": "fail",
+      "score_delta": 0,
+      "details": { "selected_exit": "north_blocked" }
+    },
+    {
+      "event_id": "evt-004",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:03:20Z",
+      "event_type": "critical_error",
+      "phase": "audit",
+      "actor_id": "anon-p001",
+      "critical_error_code": "used_blocked_exit",
+      "outcome": "fail",
+      "score_delta": -20
+    },
+    {
+      "event_id": "evt-005",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:06:00Z",
+      "event_type": "microdrill_started",
+      "phase": "micro_drill",
+      "actor_id": "system",
+      "target_id": "drill_exit_selection",
+      "outcome": "info"
+    },
+    {
+      "event_id": "evt-006",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:08:15Z",
+      "event_type": "microdrill_completed",
+      "phase": "micro_drill",
+      "actor_id": "anon-p001",
+      "target_id": "drill_exit_selection",
+      "outcome": "success"
+    },
+    {
+      "event_id": "evt-007",
+      "session_id": "sess-20260228-001",
+      "participant_id": "anon-p001",
+      "timestamp": "2026-02-28T14:09:00Z",
+      "event_type": "re_audit_completed",
+      "phase": "re_audit",
+      "actor_id": "system",
+      "objective_id": "obj_use_safe_exit",
+      "outcome": "success",
+      "score_delta": 25
+    }
+  ],
+  "score": {
+    "score_total": 72,
+    "status": "conditional_pass",
+    "why": [
+      "+25 obj_activate_alarm: alarm was activated within 90 seconds (evt-002).",
+      "-20 critical used_blocked_exit: unsafe blocked exit selected (evt-004).",
+      "+25 re-audit obj_use_safe_exit: corrected exit choice after drill (evt-007)."
+    ]
+  },
+  "report": {
+    "session_id": "sess-20260228-001",
+    "participant_id": "anon-p001",
+    "scenario_id": "office_fire_mvp",
+    "score_total": 72,
+    "status": "conditional_pass",
+    "objective_breakdown": [
+      {
+        "objective_id": "obj_activate_alarm",
+        "label": "Activate fire alarm promptly",
+        "weight": 25,
+        "achieved": true,
+        "score_awarded": 25,
+        "evidence_event_ids": ["evt-002"]
+      },
+      {
+        "objective_id": "obj_use_safe_exit",
+        "label": "Use safe evacuation route",
+        "weight": 25,
+        "achieved": true,
+        "score_awarded": 25,
+        "evidence_event_ids": ["evt-007"]
+      }
+    ],
+    "critical_errors": [
+      {
+        "code": "used_blocked_exit",
+        "trigger_event_id": "evt-004",
+        "penalty": 20,
+        "why": "Blocked exit was chosen during initial audit."
+      }
+    ],
+    "why": [
+      "Alarm objective achieved on first attempt.",
+      "Exit routing corrected after targeted micro-drill."
+    ],
+    "recommended_microdrills": [
+      {
+        "microdrill_id": "drill_exit_selection",
+        "reason": "Selected blocked exit during audit."
+      }
+    ],
+    "re_audit_delta": {
+      "score_delta": 25,
+      "improved_objectives": ["obj_use_safe_exit"]
+    }
+  }
+}

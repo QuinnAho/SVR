@@ -1,0 +1,8 @@
+﻿{
+  "locale": "en-US",
+  "strings": {
+    "report.title": "After Action Report",
+    "session.audit": "Audit",
+    "session.reaudit": "Re-audit"
+  }
+}

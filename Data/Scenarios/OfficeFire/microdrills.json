@@ -1,0 +1,43 @@
+{
+  "scenario_id": "office_fire_mvp",
+  "version": "1.0.0",
+  "microdrills": [
+    {
+      "microdrill_id": "drill_alarm_activation",
+      "title": "Alarm Activation Drill",
+      "duration_seconds": 90,
+      "targets": ["obj_activate_alarm"],
+      "trigger_if": {
+        "missed_objective_ids": ["obj_activate_alarm"],
+        "critical_error_codes": []
+      },
+      "success_event": "alarm_activated"
+    },
+    {
+      "microdrill_id": "drill_exit_selection",
+      "title": "Safe Exit Selection Drill",
+      "duration_seconds": 120,
+      "targets": ["obj_use_safe_exit"],
+      "trigger_if": {
+        "missed_objective_ids": ["obj_use_safe_exit"],
+        "critical_error_codes": ["used_blocked_exit"]
+      },
+      "success_event": "exit_selected"
+    },
+    {
+      "microdrill_id": "drill_extinguisher_judgment",
+      "title": "Extinguisher Go/No-Go Drill",
+      "duration_seconds": 90,
+      "targets": ["obj_extinguisher_judgment"],
+      "trigger_if": {
+        "missed_objective_ids": ["obj_extinguisher_judgment"],
+        "critical_error_codes": []
+      },
+      "success_event": "extinguisher_attempted"
+    }
+  ],
+  "selection_policy": {
+    "max_assigned": 1,
+    "priority": ["critical_error_match", "highest_weight_miss"]
+  }
+}

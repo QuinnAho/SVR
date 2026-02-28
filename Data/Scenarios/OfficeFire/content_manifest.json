@@ -1,0 +1,6 @@
+﻿{
+  "scenario_id": "office_fire_mvp",
+  "required_levels": ["OfficeFire_MVP"],
+  "required_assets": [],
+  "notes": "Populate with concrete level/asset IDs during content lock."
+}

@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SVRCore",
+	"Description": " Core SVR systems for deterministic simulation, scoring, and reporting.",
+	"Category": "Other",
+	"CreatedBy": "Immersalab",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SVRCore",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

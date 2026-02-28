@@ -1,0 +1,65 @@
+# -----------------------------
+# Unreal Engine Generated Files
+# -----------------------------
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Plugin/module generated artifacts
+Plugins/*/Binaries/
+Plugins/*/Intermediate/
+
+# -----------------------------
+# IDE / Editor
+# -----------------------------
+.vs/
+.vscode/
+.idea/
+
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.opendb
+
+# Rider / CLion / CMake
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+
+# -----------------------------
+# Platform / OS Noise
+# -----------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# -----------------------------
+# Language / Tooling Caches
+# -----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# -----------------------------
+# Unreal User Content
+# -----------------------------
+Content/Developers/
+Content/Collections/
+
+# -----------------------------
+# Logs / Temp
+# -----------------------------
+*.log
+*.tmp
+*.temp

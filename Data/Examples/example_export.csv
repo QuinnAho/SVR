@@ -1,0 +1,8 @@
+timestamp,event_type,phase,actor_id,outcome,objective_id,critical_error_code,score_delta
+2026-02-28T14:00:00Z,phase_transition,audit,system,info,,,
+2026-02-28T14:01:10Z,alarm_activated,audit,anon-p001,success,obj_activate_alarm,,25
+2026-02-28T14:03:00Z,exit_selected,audit,anon-p001,fail,obj_use_safe_exit,,0
+2026-02-28T14:03:20Z,critical_error,audit,anon-p001,fail,,used_blocked_exit,-20
+2026-02-28T14:06:00Z,microdrill_started,micro_drill,system,info,,,
+2026-02-28T14:08:15Z,microdrill_completed,micro_drill,anon-p001,success,,,
+2026-02-28T14:09:00Z,re_audit_completed,re_audit,system,success,obj_use_safe_exit,,25

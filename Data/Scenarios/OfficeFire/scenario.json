@@ -1,0 +1,52 @@
+{
+  "scenario_id": "office_fire_mvp",
+  "name": "Office Fire MVP",
+  "version": "1.0.0",
+  "duration_minutes": 15,
+  "deterministic": true,
+  "phases": [
+    {
+      "phase_id": "audit",
+      "timebox_seconds": 420,
+      "objectives": [
+        {
+          "objective_id": "obj_activate_alarm",
+          "label": "Activate fire alarm promptly",
+          "success_event": "alarm_activated",
+          "success_within_seconds": 90
+        },
+        {
+          "objective_id": "obj_use_safe_exit",
+          "label": "Use safe evacuation route",
+          "success_event": "exit_selected",
+          "required_detail": { "selected_exit": "south_safe" }
+        }
+      ],
+      "critical_errors": [
+        {
+          "code": "used_blocked_exit",
+          "event_type": "critical_error",
+          "detail_equals": { "critical_error_code": "used_blocked_exit" }
+        }
+      ],
+      "next_phase_on_complete": "score_report"
+    },
+    {
+      "phase_id": "score_report",
+      "timebox_seconds": 120,
+      "next_phase_on_complete": "micro_drill"
+    },
+    {
+      "phase_id": "micro_drill",
+      "timebox_seconds": 180,
+      "assignment_source": "objective_miss_or_critical_error",
+      "next_phase_on_complete": "re_audit"
+    },
+    {
+      "phase_id": "re_audit",
+      "timebox_seconds": 180,
+      "objectives_repeat": ["obj_use_safe_exit"],
+      "complete_event": "re_audit_completed"
+    }
+  ]
+}

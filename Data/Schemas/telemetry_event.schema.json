@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "svr.telemetry_event.schema.json",
+  "title": "SVR Telemetry Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "session_id",
+    "participant_id",
+    "timestamp",
+    "event_type",
+    "phase",
+    "actor_id",
+    "outcome"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 1 },
+    "session_id": { "type": "string", "minLength": 1 },
+    "participant_id": { "type": "string", "minLength": 1 },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "phase_transition",
+        "alarm_activated",
+        "hazard_identified",
+        "exit_selected",
+        "extinguisher_attempted",
+        "critical_error",
+        "microdrill_started",
+        "microdrill_completed",
+        "re_audit_started",
+        "re_audit_completed"
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["audit", "score_report", "micro_drill", "re_audit"]
+    },
+    "actor_id": { "type": "string", "minLength": 1 },
+    "target_id": { "type": "string" },
+    "outcome": {
+      "type": "string",
+      "enum": ["success", "fail", "partial", "info"]
+    },
+    "score_delta": { "type": "number" },
+    "objective_id": { "type": "string" },
+    "critical_error_code": { "type": "string" },
+    "details": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
